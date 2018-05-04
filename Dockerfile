@@ -4,7 +4,7 @@ FROM alpine:latest
 MAINTAINER Dominik Hahn <dominik@monostream.com>
 
 # Define rancher version
-ENV RANCHER_CLI_VERSION=v0.6.0
+ENV RANCHER_CLI_VERSION=v0.6.9
 
 # Install dependencies and rancher
 RUN apk add --quiet --no-cache ca-certificates && \
@@ -15,7 +15,8 @@ RUN apk add --quiet --no-cache ca-certificates && \
 	rm -rf /var/cache/*
 
 # Set working directory
-WORKDIR /workspace
+RUN mkdir /app
+WORKDIR /app
 
 # Executing defaults
 CMD ["/usr/local/bin/rancher", "--version"]
